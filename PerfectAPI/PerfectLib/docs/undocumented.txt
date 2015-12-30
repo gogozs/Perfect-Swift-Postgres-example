@@ -1,0 +1,83 @@
+LogManager.swift
+	public class LogManager
+Closeable.swift
+	public protocol Closeable
+	func close()
+	func doWithClose(c: ()->())
+	public protocol Closeable
+	public func doWithClose(c: ()->())
+AJAXObjectDriver.swift
+	public let curl = CURL()
+	public init(endpointBase: String, fileExtension: String = ".mustache")
+	public func close()
+	public func performRequest(uri: String) -> (Int, String, String)
+	public func load<T : PerfectObject>(type: T, withId: uuid_t) -> T
+	public func load<T : PerfectObject>(type: T, withUniqueField: (String,String)) -> T
+	public func delete(type: PerfectObject) -> (Int, String)
+	public func commitChanges(type: PerfectObject) -> (Int, String)
+	public func commitChanges(types: [PerfectObject]) -> [(Int, String)]
+	public func create<T : PerfectObject>(withFields: [(String,String)]) -> T
+	public func joinTable<T : PerfectObject>(type: PerfectObject, name: String) -> [T]
+	public func list<T : PerfectObject>() -> [T]
+	public func list<T : PerfectObject>(withCriterion: (String,String)) -> [T]
+PerfectObjectHandler.swift
+	public class PerfectObjectHandler: PageHandler
+	public var action: HandlerAction = .None
+	public var params = [String:String]()
+	public init() {}
+	public func valuesForResponse(context: MustacheEvaluationContext, collector: MustacheEvaluationOutputCollector) throws -> MustacheEvaluationContext.MapType
+NetTCPSSL.swift
+	public class NetTCPSSL : NetTCP
+	public var usingSSL: Bool
+	public override init()
+	override public func initSocket()
+	public func errorCode() -> UInt
+	public func sslErrorCode(resultCode: Int32) -> Int32
+	public func errorStr(errorCode: Int32) -> String
+	public func reasonErrorStr(errorCode: Int32) -> String
+	public override func close()
+	public func beginSSL(closure: (Bool) -> ())
+	public func beginSSL(timeout: Double, closure: (Bool) -> ())
+	public func endSSL()
+	public func shutdown()
+	public func setConnectState()
+	public func setAcceptState()
+	public func setVerifyLocations(caFilePath: String, caDirPath: String) -> Bool
+	public func useCertificateChainFile(cert: String) -> Bool
+	public func usePrivateKeyFile(cert: String) -> Bool
+PerfectObject.swift
+	public enum HandlerAction
+	case None
+	case Load
+	case Create
+	case Delete
+	case Commit
+	case List
+	public enum HandlerAction
+	public func asString() -> String
+	public static func fromString(s:String) -> HandlerAction
+	public protocol PerfectObjectDriver : Closeable
+	func load<T : PerfectObject>(type: T, withId: uuid_t) -> T
+	func load<T : PerfectObject>(type: T, withUniqueField: (String,String)) -> T
+	func delete(type: PerfectObject) -> (Int, String)
+	func commitChanges(type: PerfectObject) -> (Int, String)
+	func commitChanges(types: [PerfectObject]) -> [(Int, String)]
+	func create<T : PerfectObject>(withFields: [(String,String)]) -> T
+	func joinTable<T : PerfectObject>(type: PerfectObject, name: String) -> [T]
+	func list<T : PerfectObject>() -> [T]
+	func list<T : PerfectObject>(withCriterion: (String,String)) -> [T]
+	public protocol PerfectObjectDriver : Closeable
+	public func generateUUID() -> uuid_t
+	public class PerfectObject
+	public func setOrderBy(to: String)
+	public func orderBy() -> String?
+	public func setOrderDesc(to: Bool)
+	public func orderDesc() -> Bool
+	public func setSimpleName(to: String)
+	public func simpleName() -> String
+	public func setObjectId(id: uuid_t)
+	public func fieldList() -> [String]
+	public func tableName() -> String
+	public func joinTable<T : PerfectObject>(name: String) -> [T]
+	public func clearJoins(named: String)
+	public func created(withFields: [(String,String)])
