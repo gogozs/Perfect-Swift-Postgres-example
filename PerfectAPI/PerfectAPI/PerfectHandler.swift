@@ -10,6 +10,11 @@ import PerfectLib
 
 let enableMustacheFile: Bool = false
 
+let dbhost: String = "localhost"
+let dbusername: String = "perfect"
+let dbuserpassword: String = "password"
+let dbname: String = "simpleperfectapi"
+
 public func PerfectServerModuleInit() -> Void {
     
     print("###########################################")
@@ -22,10 +27,17 @@ public func PerfectServerModuleInit() -> Void {
         }
     } else {
         Routing.Handler.registerGlobally()
-        Routing.Routes["/*"] = { _ in
-            print("Default Request Handler")
-            return DefaultHandler()
+        
+        Routing.Routes["POST" , "/account/"] = { _ in
+            print("Create Account Request Handler")
+            return AccountCreateHandler()
         }
+        
+        Routing.Routes["GET" , "/account/"] = { _ in
+            print("Get list Account Request Handler")
+            return AccountGetListHandler()
+        }
+        
         Routing.Routes["/"] = { _ in
             print("Default Request Handler")
             return DefaultHandler()
