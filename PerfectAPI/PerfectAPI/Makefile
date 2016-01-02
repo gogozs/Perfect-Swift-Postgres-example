@@ -11,7 +11,7 @@ SRC = \
 PERFECT_ROOT = ../PerfectLib
 SWIFTC = swift
 
-SWIFTC_FLAGS = -frontend -c -module-cache-path $(MODULE_CACHE_PATH) -emit-module -I /usr/local/lib -I ../PerfectLib/linked/LibEvent \
+SWIFTC_FLAGS = -frontend -c -module-cache-path $(MODULE_CACHE_PATH) -emit-module -I /usr/local/lib -I $(PERFECT_ROOT)/linked/LibEvent \
 	-I ../PerfectLib/linked/OpenSSL_Linux -I ../PerfectLib/linked/ICU -I ../PerfectLib/linked/SQLite3 -I ../PerfectLib/linked/LinuxBridge
 
 MODULE_CACHE_PATH = /tmp/modulecache

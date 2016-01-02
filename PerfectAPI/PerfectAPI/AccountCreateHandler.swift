@@ -42,7 +42,7 @@ class AccountCreateHandler: RequestHandler {
             repStatus = ResponseStatus(status: ResponseStatusValue.Error, value: 1003, message: "Username and/or email missing on body!")
         }
         
-        //response.addHeader("Content-Type", value: "application/json")
+        response.addHeader("Content-Type", value: "application/json")
         response.appendBodyString(repStatus.toJSON())
         response.requestCompletedCallback()
     }
