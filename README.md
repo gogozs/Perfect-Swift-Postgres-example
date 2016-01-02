@@ -11,8 +11,6 @@ On your OSX, install [Postgres.app](http://postgresapp.com), create a database, 
 After, open the "PerfectAPI.xcodeproj" file with Xcode, edit the PerfectHandler.swift file with the correct host, username, password and name of your database. Now compile the "PerfectAPI" target and run the "PerfectServer HTTP App" target.
 
 ### Ubuntu 15.10
-It's fun!...
-
 You must install and config swift, Apache2 and Postgres.
 
 Edit the Makfile file on "PerfectAPI/" directory with correct path (DIR\_API).
