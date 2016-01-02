@@ -41,7 +41,7 @@ class AccountGetListHandler: RequestHandler {
                         tuple += 1
                     }
                     
-                    repStatus = ResponseStatus(status: ResponseStatusValue.OK, value: 1, message: accounts)
+                    repStatus = ResponseStatus(status: ResponseStatusValue.OK, value: 1, message: "\(accounts)")
                 } else {
                     repStatus = ResponseStatus(status: ResponseStatusValue.Error, value: 1001, message: "Fail request!")
                 }
@@ -51,7 +51,7 @@ class AccountGetListHandler: RequestHandler {
         }
         pgsl.close()
         
-        response.addHeader("Content-Type", value: "application/json")
+        //response.addHeader("Content-Type", value: "application/json")
         response.appendBodyString(repStatus.toJSON())
         response.requestCompletedCallback()
     }

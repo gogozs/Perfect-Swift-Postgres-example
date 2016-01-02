@@ -1,0 +1,1 @@
+LoadModule perfect_module /usr/lib/apache2/modules/mod_perfect.so

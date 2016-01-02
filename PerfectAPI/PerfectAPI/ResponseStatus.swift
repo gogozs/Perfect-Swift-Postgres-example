@@ -25,25 +25,26 @@ enum ResponseStatusValue {
 class ResponseStatus {
     let status: ResponseStatusValue
     let value: Int
-    let message: AnyObject
+    let message: String
     
-    init(status: ResponseStatusValue, value: Int, message: AnyObject) {
+    init(status: ResponseStatusValue, value: Int, message: String) {
         self.status = status
         self.value = value
         self.message = message
     }
     
     func toJSON() -> String {
-        let rep: [String: AnyObject] = ["status": self.status.getStatus(), "value": self.value, "message": self.message]
+        /*let rep: [String: String] = ["status": self.status.getStatus(), "value": "\(self.value)", "message": self.message]
         do {
-            let json: NSData = try NSJSONSerialization.dataWithJSONObject(rep, options: NSJSONWritingOptions.PrettyPrinted)
+            let json: NSData = try NSJSONSerialization.dataWithJSONObject(rep as! AnyObject, options: NSJSONWritingOptions.PrettyPrinted)
             if let str: NSString = NSString(data: json, encoding: NSUTF8StringEncoding) {
-                return str as String
+                return String(str)
             } else {
                 return "{}"
             }
         } catch {
             return "{}"
-        }
+        }*/
+        return "{ \"status\" = \"\(self.status.getStatus())\", \"value\" = \"\(self.value)\", \"message\" = \"\(self.message)\"}"
     }
 }
