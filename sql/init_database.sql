@@ -7,7 +7,7 @@ $$
 BEGIN
     IF NOT EXISTS (SELECT * FROM account WHERE account.pseudo = ADD_ACCOUNT.PSEUDO) THEN
         INSERT INTO account (pseudo, mail) VALUES (ADD_ACCOUNT.PSEUDO, ADD_ACCOUNT.MAIL);
-        RETURN FOUND;
+        RETURN true;
     END IF;
     RETURN false;
 END;
